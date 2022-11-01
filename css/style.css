@@ -1,0 +1,34 @@
+body {
+    background: #192a32;
+    display: flex;
+}
+
+img{
+    height: 200px;
+}
+
+main{
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    height: 50px;
+    margin-left: 10px;
+}
+
+.turn{
+    height: 50px;
+}
+
+.reload {
+    height: 50px;
+    margin-left: 220px;
+    margin-bottom: 3px;
+}
+
+.selectTurn {
+    margin-bottom: 10px;
+}
