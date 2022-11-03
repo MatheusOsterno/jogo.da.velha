@@ -2,7 +2,9 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: cursive;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #a8bec9;
+    
 }
 
 body{
@@ -10,7 +12,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: #f7f7f7;
+    background: #072533;
 }
 
 main {
@@ -38,8 +40,10 @@ hr {
 .game button {
     width: 100px;
     height: 100px;
-    margin: 5px;
+    margin: 7px;
     cursor: pointer;
     font-size: 50px;
-    background: white;
+    background: #1f3540;
+    border-radius: 13px;
+    box-shadow: 0px 5px 0px #0c151a;
 }

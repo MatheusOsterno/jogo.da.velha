@@ -57,9 +57,9 @@ function check() {
         }
     }
 
-    if (selected.filter((item) => item).lenght === 9) {
-        alert("DEU EMPATE")
-        init();
-        return;
-    }
+  if (selected.filter((item) => item).length === 9) {
+    alert("DEU EMPATE!");
+    init();
+    return;
+  }
 }
