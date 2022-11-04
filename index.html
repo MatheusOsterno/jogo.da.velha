@@ -5,29 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
+    <title>Jogo da velha</title>
 </head>
 <body>
-    <main>
-        <h1>Jogo da velha </h1>
-            <div class="game">
-                <button data-i="1" class="estilo"></button>
-                <button data-i="2" class="estilo"></button>
-                <button data-i="3" class="estilo"></button>
-                <button data-i="4" class="estilo"></button>
-                <button data-i="5" class="estilo"></button>
-                <button data-i="6" class="estilo"></button>
-                <button data-i="7" class="estilo"></button>
-                <button data-i="8" class="estilo"></button>
-                <button data-i="9" class="estilo"></button>   
-            </div>
-            <h2 class="currentPlayer"></h2>
-            <dialog open>
-                <h3>Voce ganhou</h3>
-                <butto>Sair</butto> 
-                <button>Proxima partida</button>
-            </dialog>
-    </main>
-    <script src="script.js"></script>
+    <dialog id="dialog">
+        <form method="dialog">
+        <p>Regras do game</p>
+        <button>Comneçar game</button>
+        </form>
+    </dialog>
+    <div class="board x" data-board>
+        <h1> - </h1>
+        <h1>Jogo da velha</h1>
+        <h1> - </h1>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div></div>
+        <img src="./images/reload.png" alt="" onClick="window.location.reload()">       
+        <div></div>
+        <h1> by </h1>
+        <h1>Matheus</h1>
+        <h1>Osterno</h1>
+    </div>
+
+    <div class="winning-message" data-winning-message>
+        <span class="winnning-menssage-text" data-winning-message-text>X Venceu!</span>
+        <button class="winnning-menssage" data-restart-button>Reiniciar</button>
+    </div>
+    <script src="./script.js" ></script>
 </body>
 </html>

@@ -1,65 +1,126 @@
-const currentPlayer = document.querySelector(".currentPlayer");
+const cellElements = document.querySelectorAll("[data-cell]");
+const board = document.querySelector("[data-board]");
+const winningMessageTextElement = document.querySelector(
+  "[data-winning-message-text]"
+);
+const winningMessage = document.querySelector("[data-winning-message]");
+const restartButton = document.querySelector("[data-restart-button]");
 
-let selected;
-let player = "X";
+let isCircleTurn;
 
-let positions = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-    [1, 4, 7],
-    [2, 5, 8],
-    [3, 6, 9],
-    [1, 5, 9],
-    [3, 5, 7],
+const winningCombinations = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
 ];
 
-function init() {
-    selected = [];
-  
-    currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
-  
-    document.querySelectorAll(".game button").forEach((item) => {
-      item.innerHTML = "";
-      item.addEventListener("click", newMove);
+const startGame = () => {
+  isCircleTurn = false;
+
+  for (const cell of cellElements) {
+    cell.classList.remove("circle");
+    cell.classList.remove("x");
+    cell.removeEventListener("click", handleClick);
+    cell.addEventListener("click", handleClick, { once: true });
+  }
+
+  setBoardHoverClass();
+  winningMessage.classList.remove("show-winning-message");
+};
+
+const endGame = (isDraw) => {
+  if (isDraw) {
+    winningMessageTextElement.innerText = "Empate!";
+  } else {
+    winningMessageTextElement.innerText = isCircleTurn
+      ? "O Venceu!"
+      : "X Venceu!";
+  }
+
+  winningMessage.classList.add("show-winning-message");
+};
+
+const checkForWin = (currentPlayer) => {
+  return winningCombinations.some((combination) => {
+    return combination.every((index) => {
+      return cellElements[index].classList.contains(currentPlayer);
     });
+  });
+};
+
+const checkForDraw = () => {
+  return [...cellElements].every((cell) => {
+    return cell.classList.contains("x") || cell.classList.contains("circle");
+  });
+};
+
+const placeMark = (cell, classToAdd) => {
+  cell.classList.add(classToAdd);
+};
+
+const setBoardHoverClass = () => {
+  board.classList.remove("circle");
+  board.classList.remove("x");
+
+  if (isCircleTurn) {
+    board.classList.add("circle");
+  } else {
+    board.classList.add("x");
   }
+};
 
-init();
+const swapTurns = () => {
+  isCircleTurn = !isCircleTurn;
 
-function newMove(e) {
-    const index = e.target.getAttribute("data-i");
-    e.target.innerHTML = player;
-    e.target.removeEventListener("click", newMove);
-    selected[index] = player;
+  setBoardHoverClass();
+};
 
-    setTimeout(() => {
-        check();
-    },[100]);
+const handleClick = (e) => {
+  // Colocar a marca (X ou Círculo)
+  const cell = e.target;
+  const classToAdd = isCircleTurn ? "circle" : "x";
 
-    player = player === "X" ? "O" : "X";
-    currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
-}
+  placeMark(cell, classToAdd);
 
-function check() {
-    let playerLastMove = player === "X" ? "O" : "X";
+  // Verificar por vitória
+  const isWin = checkForWin(classToAdd);
 
-    const items =  selected
-        .map((item, i) => [item, i])
-        .filter((item) => item[0] === playerLastMove)
-        .map((item) => item[1]);
+  // Verificar por empate
+  const isDraw = checkForDraw();
 
-    for (pos of positions) {
-        if(pos.every((item) => items.includes(item))) {
-            alert ("O JOGADOR '" + playerLastMove + "' GANHOU");
-            init();
-            return;
-        }
-    }
-
-  if (selected.filter((item) => item).length === 9) {
-    alert("DEU EMPATE!");
-    init();
-    return;
+  if (isWin) {
+    endGame(false);
+  } else if (isDraw) {
+    endGame(true);
+  } else {
+    // Mudar símbolo
+    swapTurns();
   }
-}
+};
+
+startGame();
+
+restartButton.addEventListener("click", startGame);
+
+/* regras do game */
+
+(function() {
+    var updateButton = document.getElementById('updateDetails');
+    var cancelButton = document.getElementById('cancel');
+    var favDialog = document.getElementById('favDialog');
+  
+    // O botão Update abre uma Dialog
+    updateButton.addEventListener('click', function() {
+      favDialog.showModal();
+    });
+  
+    // O botão cancelButtom fecha uma Dialog
+    cancelButton.addEventListener('click', function() {
+      favDialog.close();
+    });
+  })();
