@@ -152,11 +152,3 @@ h1 {
     font-size: 20px;
     margin: 15px;
 }
-
-dialog{
-    display: flex;
-    justify-content: flex;
-    margin: auto;
-    left: 0;
-    top:0;
-}
