@@ -1,9 +1,12 @@
 # Jogo Da Velha
 
+Quem nunca jogou o famoso jogo da velha!
+
+Me inspirei para fazer esse jogo por conta de sua logica de programação que ela usa, apesar da jogabilidade ser simples e intuitiva, a programação por trás dessa aplicação me desafiou bastante por ter muitos comando , estilos e regras. No projeto tive muitos desafios que me fez quebrar a cabeça para tentar resolve-los.
+
 <div align="center">
   <img src="https://media.discordapp.net/attachments/318968437714190339/1038234527631429693/jogo_da_velha.gif" width="500px">
 </div>
-
 
 Projeto feito como desafio no site https://www.frontendmentor.io/challenges/tic-tac-toe-game-Re7ZF_E2v
 
