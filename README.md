@@ -8,7 +8,6 @@ Me inspirei para fazer esse jogo por conta de sua logica de programação que el
   <img src="https://media.discordapp.net/attachments/318968437714190339/1038234527631429693/jogo_da_velha.gif" width="500px">
 </div>
 
-
 Projeto feito como desafio no site https://www.frontendmentor.io/challenges/tic-tac-toe-game-Re7ZF_E2v
 
 Fiz todo o código do zero deixando o projeto o mais fiel possível do desafio. Nele foi feito  
